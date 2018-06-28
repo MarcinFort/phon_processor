@@ -10,13 +10,21 @@ export class SegmentDiv extends React.Component {
         features: []
     };
     
+    addFeature() {
+        if (!this.state.features.includes(this.state.currentFeature)) {
+            this.setState({
+                features: this.state.features.concat(this.state.currentFeature)
+            })
+        }
+    }
+
     render() {
 
         return (   
             <div class="segmentDiv">
                 <ValuePicker />
                 <FeaturePicker />
-                <AddFeatureButton />
+                <AddFeatureButton addFeature={this.addFeature.bind(this)}/>
                 <div class="segmentSpecs">
                     {this.state.features}
                 </div>
