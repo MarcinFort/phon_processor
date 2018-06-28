@@ -2,20 +2,19 @@ import React from 'react';
 import { AddFeatureButton } from './AddFeatureButton';
 import { ValuePicker } from './ValuePicker';
 import { FeaturePicker } from './FeaturePicker';
+import { SegmentWindow } from './SegmentWindow';
 
 export class SegmentDiv extends React.Component {
     
     state = {
-        currentFeature: "",
-        features: []
+        currentFeature: {},
+        features: {}
     };
     
-    addFeature() {
-        if (!this.state.features.includes(this.state.currentFeature)) {
-            this.setState({
-                features: this.state.features.concat(this.state.currentFeature)
-            })
-        }
+    addFeature() {    
+            this.setState(prevState => ({
+                features: Object.assign(prevState.features, this.state.currentFeature)
+            }))
     }
 
     render() {
@@ -25,9 +24,7 @@ export class SegmentDiv extends React.Component {
                 <ValuePicker />
                 <FeaturePicker />
                 <AddFeatureButton addFeature={this.addFeature.bind(this)}/>
-                <div class="segmentSpecs">
-                    {this.state.features}
-                </div>
+                <SegmentWindow features={this.state.features}/>
             </div>
         )
     }
