@@ -11,6 +11,7 @@ export class ValuePicker extends React.Component {
         this.setState({
             value: event.target.value
         })
+        this.props.updateCurrentValue(event.target.value);
     }
 
     render() {

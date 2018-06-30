@@ -7,10 +7,17 @@ import { SegmentWindow } from './SegmentWindow';
 export class SegmentDiv extends React.Component {
     
     state = {
-        currentFeature: {},
+        currentFeature: { consonantal: "+" },
         features: {}
     };
     
+    updateCurrentValue(val) {
+        let feature = Object.keys(this.state.currentFeature)[0];
+        this.setState({
+            currentFeature: { [feature]: val }
+        })
+    }
+
     addFeature() {    
         this.setState(prevState => ({
             features: Object.assign(prevState.features, this.state.currentFeature)
@@ -21,7 +28,7 @@ export class SegmentDiv extends React.Component {
 
         return (   
             <div class="segmentDiv">
-                <ValuePicker />
+                <ValuePicker updateCurrentValue={this.updateCurrentValue.bind(this)}/>
                 <FeaturePicker />
                 <AddFeatureButton addFeature={this.addFeature.bind(this)}/>
                 <SegmentWindow features={this.state.features}/>
