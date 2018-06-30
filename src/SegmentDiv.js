@@ -12,9 +12,9 @@ export class SegmentDiv extends React.Component {
     };
     
     addFeature() {    
-            this.setState(prevState => ({
-                features: Object.assign(prevState.features, this.state.currentFeature)
-            }))
+        this.setState(prevState => ({
+            features: Object.assign(prevState.features, this.state.currentFeature)
+        }))
     }
 
     render() {

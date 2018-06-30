@@ -3,9 +3,19 @@ import React from 'react';
 
 export class FeaturePicker extends React.Component {
 
+    state = {
+        value: "syllabic"
+    }
+
+    handleChange(event) {
+        this.setState({
+            value: event.target.value
+        })
+    }
+
     render() {
         return (
-        <select>
+        <select value={this.state.value} onChange={this.handleChange.bind(this)}>
             <option value="syllabic">syllabic</option>
             <option value="stress">stress</option>
             <option value="long">long</option>
