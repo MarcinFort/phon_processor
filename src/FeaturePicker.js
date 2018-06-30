@@ -11,6 +11,8 @@ export class FeaturePicker extends React.Component {
         this.setState({
             value: event.target.value
         })
+        this.props.updateCurrentFeature(event.target.value);
+
     }
 
     render() {
