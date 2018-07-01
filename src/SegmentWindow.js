@@ -3,9 +3,6 @@ import { Feature } from './Feature'
 
 export class SegmentWindow extends React.Component {
     
-    componentDidMount() {
-        console.log(this.props.removeFeature);
-    }
 
     render() {
 
