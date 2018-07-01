@@ -31,6 +31,14 @@ export class SegmentDiv extends React.Component {
         }))
     }
 
+    removeFeature(feature) {
+        let currentFeatures = Object.assign({}, this.state.features);
+        delete currentFeatures[feature];
+        this.setState({
+            features: currentFeatures
+        });
+    }
+
     render() {
 
         return (   
@@ -38,7 +46,7 @@ export class SegmentDiv extends React.Component {
                 <ValuePicker updateCurrentValue={this.updateCurrentValue.bind(this)}/>
                 <FeaturePicker updateCurrentFeature={this.updateCurrentFeature.bind(this)}/>
                 <AddFeatureButton addFeature={this.addFeature.bind(this)}/>
-                <SegmentWindow features={this.state.features}/>
+                <SegmentWindow features={this.state.features} removeFeature={this.removeFeature.bind(this)}/>
             </div>
         )
     }
