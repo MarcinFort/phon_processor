@@ -1,5 +1,6 @@
 import React from 'react';
 import { featuresAPI } from './data/FeaturesAPI';
+import { IndivSegment } from './IndivSegment';
 
 export class InvWindow extends React.Component {
 
@@ -17,7 +18,7 @@ export class InvWindow extends React.Component {
             return this.checkSegment(x, this.props.features);
         });
     
-        return JSON.stringify(this.props.features).length > 2 ? filteredInv.map(y => <span> {y.ipa} </span>) : <span></span>
+        return JSON.stringify(this.props.features).length > 2 ? filteredInv.map(y => <IndivSegment spec={y} />) : <span></span>
     }
 
 
