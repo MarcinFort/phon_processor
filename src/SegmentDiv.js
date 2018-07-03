@@ -8,8 +8,7 @@ import { InvWindow } from './InvWindow';
 export class SegmentDiv extends React.Component {
     
     state = {
-        currentFeature: { syllabic: "+" },
-        features: {}
+        currentFeature: { syllabic: "+" }
     };
     
     updateCurrentValue(val) {
@@ -26,29 +25,15 @@ export class SegmentDiv extends React.Component {
         })
     }
 
-    addFeature() {    
-        this.setState(prevState => ({
-            features: Object.assign(prevState.features, this.state.currentFeature)
-        }))
-    }
-
-    removeFeature(feature) {
-        let currentFeatures = Object.assign({}, this.state.features);
-        delete currentFeatures[feature];
-        this.setState({
-            features: currentFeatures
-        });
-    }
-
     render() {
 
         return (   
-            <div class="segmentDiv">
+            <div className="segmentDiv">
                 <ValuePicker updateCurrentValue={this.updateCurrentValue.bind(this)}/>
                 <FeaturePicker updateCurrentFeature={this.updateCurrentFeature.bind(this)}/>
-                <AddFeatureButton addFeature={this.addFeature.bind(this)}/>
-                <SegmentWindow features={this.state.features} removeFeature={this.removeFeature.bind(this)}/>
-                <InvWindow features={this.state.features} />
+                <AddFeatureButton addFeature={this.props.addFeature} feature={this.state.currentFeature}/>
+                <SegmentWindow features={this.props.features} removeFeature={this.props.removeFeature}/>
+                <InvWindow features={this.props.features} />
             </div>
         )
     }

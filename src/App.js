@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import { SegmentDiv } from './SegmentDiv';
+import { InputDiv } from './Input';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <SegmentDiv />
+        <InputDiv />
       </div>
     );
   }
