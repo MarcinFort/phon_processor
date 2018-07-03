@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class IndivSegment extends React.Component {
+export class IndivSegmentRow extends React.Component {
 
     state = {
         isHovering: false
