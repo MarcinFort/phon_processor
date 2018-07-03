@@ -1,5 +1,6 @@
 import React from 'react';
 import { SegmentDiv } from './SegmentDiv';
+import { InvWindow } from './InvWindow';
 
 export class InputDiv extends React.Component {
 
@@ -22,9 +23,27 @@ export class InputDiv extends React.Component {
         });
     }
 
+    addSCFeature(feature) {
+        this.setState(prevState => ({
+            structural_change: Object.assign(prevState.structural_change, feature)
+        }))
+    }
+
+    removeSCFeature(feature) {
+        let currentFeatures = Object.assign({}, this.state.structural_change);
+        delete currentFeatures[feature];
+        this.setState({
+            structural_change: currentFeatures
+        });
+    }
+
     render() {
         return(
-            <SegmentDiv addFeature={this.addInputFeature.bind(this)} removeFeature={this.removeInputFeature.bind(this)} features={this.state.input_features}/>
+            <div>
+                <SegmentDiv addFeature={this.addInputFeature.bind(this)} removeFeature={this.removeInputFeature.bind(this)} features={this.state.input_features}/>
+                <SegmentDiv addFeature={this.addSCFeature.bind(this)} removeFeature={this.removeSCFeature.bind(this)} features={this.state.structural_change}/>
+                <InvWindow features={this.state.input_features} />
+            </div>
         )
     }
 

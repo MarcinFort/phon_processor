@@ -3,7 +3,6 @@ import { AddFeatureButton } from './AddFeatureButton';
 import { ValuePicker } from './ValuePicker';
 import { FeaturePicker } from './FeaturePicker';
 import { SegmentWindow } from './SegmentWindow';
-import { InvWindow } from './InvWindow';
 
 export class SegmentDiv extends React.Component {
     
@@ -33,7 +32,6 @@ export class SegmentDiv extends React.Component {
                 <FeaturePicker updateCurrentFeature={this.updateCurrentFeature.bind(this)}/>
                 <AddFeatureButton addFeature={this.props.addFeature} feature={this.state.currentFeature}/>
                 <SegmentWindow features={this.props.features} removeFeature={this.props.removeFeature}/>
-                <InvWindow features={this.props.features} />
             </div>
         )
     }
