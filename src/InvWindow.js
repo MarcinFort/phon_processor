@@ -19,7 +19,6 @@ export class InvWindow extends React.Component {
         });
 
         let headerFeatures = Object.keys(featuresAPI[0]).slice(1);
-        console.log(headerFeatures)
     
         return (
             <table>
