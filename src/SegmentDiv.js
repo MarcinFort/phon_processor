@@ -25,7 +25,7 @@ export class SegmentDiv extends React.Component {
     }
 
     render() {
-
+        
         return (   
             <div className="segmentDiv">
                 <ValuePicker updateCurrentValue={this.updateCurrentValue.bind(this)}/>

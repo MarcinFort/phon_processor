@@ -15,20 +15,24 @@ export class InvWindow extends React.Component {
 
     render() {
         let filteredInv = featuresAPI.filter(x => {
-            return this.checkSegment(x, this.props.features);
+            return this.checkSegment(x, this.props.input_features);
         });
 
         let headerFeatures = Object.keys(featuresAPI[0]).slice(1);
     
         return (
             <table>
-                <tr>
-                    <th>Input</th>
-                    <th>    </th>
-                    <th>Output</th>
-                    {headerFeatures.map(x => <th>{x}</th>)}
-                </tr>
-                {JSON.stringify(this.props.features).length > 2 ? filteredInv.map(y => <IndivSegmentRow spec={y} />) : <span></span>}
+                <thead>
+                    <tr>
+                        <th>Input</th>
+                        <th>    </th>
+                        <th>Output</th>
+                        {headerFeatures.map(x => <th>{x}</th>)}
+                    </tr>
+                </thead>
+                <tbody>
+                    {JSON.stringify(this.props.input_features).length > 2 ? filteredInv.map(y => <IndivSegmentRow spec={y} />) : <tr></tr>}
+                </tbody>
             </table>
         )
     }
