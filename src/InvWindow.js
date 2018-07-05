@@ -14,12 +14,28 @@ export class InvWindow extends React.Component {
     }
 
     render() {
+
+        let headerFeatures = Object.keys(featuresAPI[0]).slice(1);
+
         let filteredInv = featuresAPI.filter(x => {
             return this.checkSegment(x, this.props.input_features);
         });
 
-        let headerFeatures = Object.keys(featuresAPI[0]).slice(1);
-    
+        // Merging objects with two loops, since Object.assign causes weird issues
+
+        let newObj = {}
+
+        for (let prop in this.props.structural_change) {
+            newObj[prop] = this.props.structural_change[prop]
+        }
+
+        for (let prop in this.props.input_features) {
+            if (!newObj.hasOwnProperty(prop)) {
+                newObj[prop] = this.props.input_features[prop];
+            }
+        }
+
+
         return (
             <table>
                 <thead>
