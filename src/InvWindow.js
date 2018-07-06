@@ -35,6 +35,23 @@ export class InvWindow extends React.Component {
             }
         }
 
+        let filteredInvChanged;
+        
+        if (JSON.stringify(this.props.structural_change).length > 2) {
+            
+            filteredInvChanged = filteredInv.map(x => {
+                for (let prop in this.props.structural_change) {
+                    x[prop] = this.props.structural_change[prop]
+                }
+                let noIPA = JSON.parse(JSON.stringify(x));
+                delete noIPA.ipa;
+                let changedSegment = featuresAPI.find(y => {
+                    return this.checkSegment(y, noIPA);
+                });
+                changedSegment.ipa ? x.ipa2 = changedSegment.ipa : x.ipa2 = "?";
+                return x;
+            })
+        }
 
         return (
             <table>
@@ -47,7 +64,7 @@ export class InvWindow extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {JSON.stringify(this.props.input_features).length > 2 ? filteredInv.map(y => <IndivSegmentRow spec={y} />) : <tr></tr>}
+                    {JSON.stringify(this.props.input_features).length > 2 ? (filteredInvChanged ? filteredInvChanged.map(y => <IndivSegmentRow spec={y} />) : filteredInv.map(y => <IndivSegmentRow spec={y} />)) : <tr></tr>}
                 </tbody>
             </table>
         )
