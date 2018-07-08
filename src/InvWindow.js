@@ -17,7 +17,11 @@ export class InvWindow extends React.Component {
 
         let headerFeatures = Object.keys(featuresAPI[0]).slice(1);
 
-        let filteredInv = featuresAPI.filter(x => {
+        // We need a deep copy to avoid overwriting the API
+
+        let featuresAPICopy = JSON.parse(JSON.stringify(featuresAPI));
+
+        let filteredInv = featuresAPICopy.filter(x => {
             return this.checkSegment(x, this.props.input_features);
         });
 
@@ -48,7 +52,7 @@ export class InvWindow extends React.Component {
                 let changedSegment = featuresAPI.find(y => {
                     return this.checkSegment(y, noIPA);
                 });
-                changedSegment.ipa ? x.ipa2 = changedSegment.ipa : x.ipa2 = "?";
+                changedSegment && changedSegment.ipa ? x.ipa2 = changedSegment.ipa : x.ipa2 = "?";
                 return x;
             })
         }
@@ -66,7 +70,7 @@ export class InvWindow extends React.Component {
                 <tbody>
                     {JSON.stringify(this.props.input_features).length > 2 ? (filteredInvChanged ? filteredInvChanged.map(y => <IndivSegmentRow spec={y} />) : filteredInv.map(y => <IndivSegmentRow spec={y} />)) : <tr></tr>}
                 </tbody>
-            </table>
+            </table>    
         )
     }
 
