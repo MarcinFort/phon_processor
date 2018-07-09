@@ -1,12 +1,13 @@
 import React from 'react';
 import { SegmentPicker } from './SegmentPicker';
 import { CompareButton } from './CompareButton';
+import { ComparisonWindow } from './ComparisonWindow';
 
 export class Difference extends React.Component {
 
     state = {
-        sound1: {},
-        sound2: {}
+        sound1: "",
+        sound2: ""
     }
 
     pickSound1(sound) {
@@ -28,6 +29,7 @@ export class Difference extends React.Component {
                 <SegmentPicker pickSegment={this.pickSound1.bind(this)}/>
                 <SegmentPicker pickSegment={this.pickSound2.bind(this)}/>
                 <CompareButton />
+                <ComparisonWindow sound1={this.state.sound1} sound2={this.state.sound2}/>
             </div>
         )
     }
