@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { PhonProcessor } from './PhonProcessor';
+import { Main } from './Main';
 import { Header } from './Header';
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <PhonProcessor />
+        <Main />
       </div>
     );
   }

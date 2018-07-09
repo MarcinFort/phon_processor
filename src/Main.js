@@ -1,5 +1,7 @@
 import React from 'react';
+import { Home } from './Home';
 import { PhonProcessor } from './PhonProcessor';
+import { Difference } from './Difference';
 import { Switch, Route } from 'react-router-dom';
 
 export const Main = () => (
