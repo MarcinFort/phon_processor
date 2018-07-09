@@ -2,7 +2,7 @@ import React from 'react';
 import { SegmentDiv } from './SegmentDiv';
 import { InvWindow } from './InvWindow';
 
-export class InputDiv extends React.Component {
+export class PhonProcessor extends React.Component {
 
     state = {
         input_features: {},
