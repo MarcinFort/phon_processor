@@ -1,5 +1,6 @@
 import React from 'react';
 import { featuresAPI } from './data/FeaturesAPI';
+import { ComparisonRow } from './ComparisonRow';
 
 export class ComparisonWindow extends React.Component {
 
@@ -14,13 +15,14 @@ export class ComparisonWindow extends React.Component {
         if (fullSpec2.length > 0) { delete fullSpec2[0].ipa };
 
         let rowsSpec = [];
+        
         if (fullSpec1[0] && fullSpec2[0]) {
             for (let prop in fullSpec1[0]) {
                 let arr = [];
                 if (fullSpec1[0][prop] === fullSpec2[0][prop]) {
-                    arr.push([fullSpec1[0][prop]+prop]);
+                    arr.push(fullSpec1[0][prop]+prop);
                 } else {
-                    arr.push([fullSpec1[0][prop]+prop, fullSpec2[0][prop]+prop]);
+                    arr.push(fullSpec1[0][prop]+prop, fullSpec2[0][prop]+prop);
                 }
                 rowsSpec.push(arr);
             }
@@ -35,7 +37,7 @@ export class ComparisonWindow extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-
+                    {rowsSpec.map((x, key) => <ComparisonRow spec={x} key={key} />)}
                 </tbody>
             </table>
         )

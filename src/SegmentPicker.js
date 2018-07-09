@@ -16,7 +16,7 @@ export class SegmentPicker extends React.Component {
 
         return(
             <select onChange={this.handleChange.bind(this)}>
-                {ipa_symbols.map(y => <option value={y}>{y}</option>)}
+                {ipa_symbols.map((y, key) => <option value={y} key={key}>{y}</option>)}
             </select>
         )    
     }
