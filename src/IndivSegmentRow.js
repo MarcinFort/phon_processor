@@ -2,7 +2,6 @@ import React from 'react';
 
 export class IndivSegmentRow extends React.Component {
 
-
     render() {
 
         let values = Object.values(this.props.spec).slice(1);

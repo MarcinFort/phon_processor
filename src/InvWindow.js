@@ -25,20 +25,6 @@ export class InvWindow extends React.Component {
             return this.checkSegment(x, this.props.input_features);
         });
 
-        // Merging objects with two loops, since Object.assign causes weird issues
-
-        let newObj = {}
-
-        for (let prop in this.props.structural_change) {
-            newObj[prop] = this.props.structural_change[prop]
-        }
-
-        for (let prop in this.props.input_features) {
-            if (!newObj.hasOwnProperty(prop)) {
-                newObj[prop] = this.props.input_features[prop];
-            }
-        }
-
         let filteredInvChanged;
         
         if (JSON.stringify(this.props.structural_change).length > 2) {
