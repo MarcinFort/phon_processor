@@ -36,7 +36,7 @@ export class Difference extends React.Component {
                 <ShowIrrelevantFeatures checked={this.state.showIrrelevant} toggleShowIrrelevantFeatures={this.showIrrelevantFeatures.bind(this)}/>
                 <SegmentPicker pickSegment={this.pickSound1.bind(this)}/>
                 <SegmentPicker pickSegment={this.pickSound2.bind(this)}/>
-                <ComparisonWindow sound1={this.state.sound1} sound2={this.state.sound2}/>
+                <ComparisonWindow sound1={this.state.sound1} sound2={this.state.sound2} showIrrelevant={this.state.showIrrelevant}/>
             </div>
         )
     }

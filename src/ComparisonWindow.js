@@ -20,7 +20,11 @@ export class ComparisonWindow extends React.Component {
             for (let prop in fullSpec1[0]) {
                 let arr = [];
                 if (fullSpec1[0][prop] === fullSpec2[0][prop]) {
-                    arr.push(fullSpec1[0][prop]+prop);
+                    if (!this.props.showIrrelevant && fullSpec1[0][prop] === "0" && fullSpec2[0][prop] === "0") {
+                        continue;
+                    } else {
+                        arr.push(fullSpec1[0][prop]+prop);
+                    }
                 } else {
                     arr.push(fullSpec1[0][prop]+prop, fullSpec2[0][prop]+prop);
                 }
