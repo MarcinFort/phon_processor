@@ -4,13 +4,11 @@ export class IndivSegmentRow extends React.Component {
 
     render() {
 
-        let values = Object.values(this.props.spec).slice(1);
-        if (values.length === 29) {
-            values.pop();
-        }
+        let values = Object.values(this.props.spec).slice(1, 29);
 
         return(
             <tr>
+                <td>{this.props.spec.index}</td>
                 <td>{this.props.spec.ipa}</td>
                 <td>→</td>
                 <td>{this.props.spec.ipa2}</td>

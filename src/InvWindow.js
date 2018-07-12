@@ -7,9 +7,10 @@ export class InvWindow extends React.Component {
     state = {
         headerFeatures: undefined,
         featuresAPICopy: undefined,
-        filteredInv: undefined,
+        filteredInv: [{}],
         filteredInvChanged: undefined,
-        sortedData: undefined
+        sortedData: undefined,
+        sort: 'asc'
     }
 
     checkSegment(segment, features) {
@@ -23,10 +24,17 @@ export class InvWindow extends React.Component {
 
     onSort(event, header) {
         let data = this.state.sortedData ? this.state.sortedData : (this.state.filteredInvChanged ? this.state.filteredInvChanged : this.state.filteredInv);
-        data.sort((a,b) => a[header].localeCompare(b[header]));
-        this.setState({
-            sortedData: data
-        })
+        if (data) {
+            if (header === "index") {
+                this.state.sort === 'asc' ? data.sort((a,b) => a[header] - b[header]) : data.sort((a,b) => b[header] - a[header]);
+            } else {
+                this.state.sort === 'asc' ? data.sort((a,b) => a[header].localeCompare(b[header])) : data.sort((a,b) => b[header].localeCompare(a[header]));
+            }
+            this.setState({
+                sortedData: data,
+                sort: this.state.sort === 'asc' ? 'desc' : 'asc'
+            });
+        }
     }
 
     componentWillMount() {
@@ -36,15 +44,18 @@ export class InvWindow extends React.Component {
         this.setState({
             headerFeatures: headerFeatures,
             featuresAPICopy: featuresAPICopy
-        })
+        });
     }
 
     componentWillUpdate(nextProps) {
         if (nextProps !== this.props) {
-
             let filteredInv = this.state.featuresAPICopy.filter(x => {
                 return this.checkSegment(x, nextProps.input_features);
             });
+
+            filteredInv.forEach((x, index) => {
+                x.index = index;
+            })
     
             let filteredInvChanged;
         
@@ -55,6 +66,7 @@ export class InvWindow extends React.Component {
                     }
                     let noIPA = JSON.parse(JSON.stringify(x));
                     delete noIPA.ipa;
+                    delete noIPA.index;
                     let changedSegment = featuresAPI.find(y => {
                         return this.checkSegment(y, noIPA);
                     });
@@ -77,14 +89,15 @@ export class InvWindow extends React.Component {
             <table>
                 <thead>
                     <tr>
-                        <th onClick={event => this.onSort(event, 'Input')}>Input</th>
+                        <th onClick={event => this.onSort(event, 'index')}>No.</th>
+                        <th onClick={event => this.onSort(event, 'ipa')}>Input</th>
                         <th>    </th>
-                        <th onClick={event => this.onSort(event, 'Output')}>Output</th>
+                        <th onClick={event => this.onSort(event, 'ipa')}>Output</th>
                         {this.state.headerFeatures.map(x => <th onClick={event => this.onSort(event, x)}>{x}</th>)}
                     </tr>
                 </thead>
                 <tbody>
-                    {JSON.stringify(this.props.input_features).length > 2 ? (this.state.filteredInvChanged ? this.state.filteredInvChanged.map(y => <IndivSegmentRow spec={y} />) : this.state.filteredInv.map(y => <IndivSegmentRow spec={y} />)) : <tr></tr>}
+                    {JSON.stringify(this.props.input_features).length > 2 ? (this.state.sortedData ? this.state.sortedData.map((y, key) => <IndivSegmentRow spec={y} key={key}/>) : (this.state.filteredInvChanged ? this.state.filteredInvChanged.map((y, key) => <IndivSegmentRow spec={y} key={key}/>) : this.state.filteredInv.map((y, key) => <IndivSegmentRow spec={y} key={key}/>))) : <tr></tr>}
                 </tbody>
             </table>    
         )
