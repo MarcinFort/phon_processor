@@ -49,12 +49,12 @@ export class InvWindow extends React.Component {
 
     componentWillUpdate(nextProps) {
         if (nextProps !== this.props) {
-            let filteredInv = this.state.featuresAPICopy.filter(x => {
+            let filteredInv = JSON.parse(JSON.stringify(this.state.featuresAPICopy)).filter(x => {
                 return this.checkSegment(x, nextProps.input_features);
             });
 
             filteredInv.forEach((x, index) => {
-                x.index = index;
+                x.index = index+1;
             })
     
             let filteredInvChanged;
