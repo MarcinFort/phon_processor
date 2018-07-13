@@ -22,21 +22,18 @@ export class PickInventory extends React.Component {
                             <th>retroflex</th>
                             <th>alveolo-palatal</th>
                             <th>palatal</th>
-                            <th>fronted velar</th>
                             <th>velar</th>
-                            <th>backed velar</th>
                             <th>uvular</th>
                             <th>pharyngeal</th>
                             <th>glottal</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr></tr>
+                        {basic_consonants.map(x => <tr>{x.map(y => <td>{y}</td>)}</tr>)}
                     </tbody>
                 </table>
                 <table id="vowels">
                     <thead>
-                        {basic_consonants.map(x => <tr>{x.map(y => <td>{y}</td>)}</tr>)}
                     </thead>
                     <tbody></tbody>
                 </table>
