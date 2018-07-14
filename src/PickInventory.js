@@ -3,7 +3,22 @@ import { PickInventoryTableData } from './PickInventoryTableData';
 
 export class PickInventory extends React.Component {
     
-    state = {}
+    state = {
+        inventory: []
+    };
+
+    toggleSegmentSelection(ipa) {
+        if (!this.state.inventory.includes(ipa)) {
+            this.setState({
+                inventory: this.state.inventory.concat([ipa])
+            });
+        } else {
+            let inv = this.state.inventory.filter(x => x !== ipa);
+            this.setState({
+                inventory: inv
+            });   
+        }
+    }
 
     render() {
 
@@ -32,7 +47,7 @@ export class PickInventory extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {basic_consonants.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y}/>)}</tr>)}
+                        {basic_consonants.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.toggleSegmentSelection.bind(this)}/>)}</tr>)}
                     </tbody>
                     <thead>
                         <tr>
@@ -40,7 +55,7 @@ export class PickInventory extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {other_consonants.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y}/>)}</tr>)}
+                        {other_consonants.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.toggleSegmentSelection.bind(this)}/>)}</tr>)}
                     </tbody>
                 </table>
                 <table id="vowels">
@@ -54,7 +69,7 @@ export class PickInventory extends React.Component {
                         <th>back rounded</th>
                     </thead>
                     <tbody>
-                        {vowels.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y}/>)}</tr>)}
+                        {vowels.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.toggleSegmentSelection.bind(this)}/>)}</tr>)}
                     </tbody>
                 </table>
             </div>
