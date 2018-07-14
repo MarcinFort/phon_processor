@@ -7,6 +7,9 @@ export class PickInventoryTableData extends React.Component {
     }
 
     handleChange() {
+        if (this.props.ipa.length === 0 || this.props.ipa.length > 5) {
+            return;
+        }
         this.props.toggleSegmentSelection(this.props.ipa);
         this.setState({
             selected: !this.state.selected
