@@ -2,6 +2,8 @@ import React from 'react';
 import { SegmentDiv } from './SegmentDiv';
 import { InvWindow } from './InvWindow';
 import { PickInventory } from './PickInventory';
+import { SaveInventoryButton } from './SaveInventoryButton';
+import { ModifyInventoryButton } from './ModyInventoryButton';
 
 export class PhonProcessor extends React.Component {
 
@@ -53,11 +55,29 @@ export class PhonProcessor extends React.Component {
         });
     }
 
+    saveInv() {
+        this.setState({
+            stage: 2
+        })
+    }
+
+    modifyInv() {
+        this.setState({
+            stage: 1
+        })
+    }
+
     render() {
         return(
             <div>
-                {this.state.stage === 1 ? <PickInventory toggleSegmentSelection={this.toggleSegmentSelection.bind(this)}/> :
+                {this.state.stage === 1 ? 
                 <div>
+                    <PickInventory toggleSegmentSelection={this.toggleSegmentSelection.bind(this)}/>
+                    <SaveInventoryButton saveInv={this.saveInv.bind(this)} />
+                </div>
+                :
+                <div>
+                    <ModifyInventoryButton modifyInv={this.modifyInv.bind(this)}/>
                     <SegmentDiv addFeature={this.addInputFeature.bind(this)} removeFeature={this.removeInputFeature.bind(this)} features={this.state.input_features} key={1} />
                     <SegmentDiv addFeature={this.addSCFeature.bind(this)} removeFeature={this.removeSCFeature.bind(this)} features={this.state.structural_change} key={2} />
                     <InvWindow inventory = {this.state.inventory} input_features={this.state.input_features} structural_change={this.state.structural_change} />
