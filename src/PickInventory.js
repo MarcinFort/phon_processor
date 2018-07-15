@@ -30,7 +30,7 @@ export class PickInventory extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {basic_consonants.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.props.toggleSegmentSelection}/>)}</tr>)}
+                        {basic_consonants.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.props.toggleSegmentSelection} selected={this.props.inventory.includes(y)}/>)}</tr>)}
                     </tbody>
                     <thead>
                         <tr>
@@ -38,7 +38,7 @@ export class PickInventory extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {other_consonants.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.props.toggleSegmentSelection}/>)}</tr>)}
+                        {other_consonants.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.props.toggleSegmentSelection} selected={this.props.inventory.includes(y)}/>)}</tr>)}
                     </tbody>
                 </table>
                 <table id="vowels">
@@ -52,7 +52,7 @@ export class PickInventory extends React.Component {
                         <th>back rounded</th>
                     </thead>
                     <tbody>
-                        {vowels.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.props.toggleSegmentSelection}/>)}</tr>)}
+                        {vowels.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.props.toggleSegmentSelection} selected={this.props.inventory.includes(y)}/>)}</tr>)}
                     </tbody>
                 </table>
             </div>
