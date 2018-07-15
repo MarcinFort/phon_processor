@@ -2,13 +2,15 @@ import React from 'react';
 import { SegmentPicker } from './SegmentPicker';
 import { ComparisonWindow } from './ComparisonWindow';
 import { ShowIrrelevantFeatures } from './ShowIrrelevantFeatures';
+import { UseFullInv } from './UseFullInv';
 
 export class Difference extends React.Component {
 
     state = {
         sound1: "",
         sound2: "",
-        showIrrelevant: false
+        showIrrelevant: false,
+        useFullInv: false
     }
 
     pickSound1(sound) {
@@ -23,6 +25,12 @@ export class Difference extends React.Component {
         })
     }
 
+    useFullInv() {
+        this.setState({
+            useFullInv: !this.state.useFullInv
+        })
+    }
+
     showIrrelevantFeatures(value) {
         this.setState({
             showIrrelevant: value
@@ -33,6 +41,7 @@ export class Difference extends React.Component {
         return (
             <div>
                 <p>See how any two sounds differ in terms of distinctive features</p>
+                <UseFullInv selection={this.state.useFullInv} toggleUseFullInv={this.useFullInv.bind(this)}/>
                 <ShowIrrelevantFeatures checked={this.state.showIrrelevant} toggleShowIrrelevantFeatures={this.showIrrelevantFeatures.bind(this)}/>
                 <SegmentPicker pickSegment={this.pickSound1.bind(this)}/>
                 <SegmentPicker pickSegment={this.pickSound2.bind(this)}/>
