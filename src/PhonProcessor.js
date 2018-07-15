@@ -8,23 +8,9 @@ import { ModifyInventoryButton } from './ModyInventoryButton';
 export class PhonProcessor extends React.Component {
 
     state = {
-        inventory: [],
         stage: 1,
         input_features: {},
         structural_change: {}
-    }
-
-    toggleSegmentSelection(ipa) {
-        if (!this.state.inventory.includes(ipa)) {
-            this.setState({
-                inventory: this.state.inventory.concat([ipa])
-            });
-        } else {
-            let inv = this.state.inventory.filter(x => x !== ipa);
-            this.setState({
-                inventory: inv
-            });   
-        }
     }
 
     addInputFeature(feature) {
@@ -72,7 +58,7 @@ export class PhonProcessor extends React.Component {
             <div>
                 {this.state.stage === 1 ? 
                 <div>
-                    <PickInventory toggleSegmentSelection={this.toggleSegmentSelection.bind(this)} inventory={this.state.inventory} />
+                    <PickInventory toggleSegmentSelection={this.props.toggleSegmentSelection} inventory={this.props.inventory} />
                     <SaveInventoryButton saveInv={this.saveInv.bind(this)} />
                 </div>
                 :
@@ -80,7 +66,7 @@ export class PhonProcessor extends React.Component {
                     <ModifyInventoryButton modifyInv={this.modifyInv.bind(this)}/>
                     <SegmentDiv addFeature={this.addInputFeature.bind(this)} removeFeature={this.removeInputFeature.bind(this)} features={this.state.input_features} key={1} />
                     <SegmentDiv addFeature={this.addSCFeature.bind(this)} removeFeature={this.removeSCFeature.bind(this)} features={this.state.structural_change} key={2} />
-                    <InvWindow inventory={this.state.inventory} input_features={this.state.input_features} structural_change={this.state.structural_change} />
+                    <InvWindow inventory={this.props.inventory} input_features={this.state.input_features} structural_change={this.state.structural_change} />
                 </div>
                 }
             </div>

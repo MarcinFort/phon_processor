@@ -1,14 +1,42 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Main } from './Main';
 import { Header } from './Header';
+import { Home } from './Home';
+import { PhonProcessor } from './PhonProcessor';
+import { Difference } from './Difference';
+import { Switch, Route } from 'react-router-dom';
+
 
 class App extends Component {
+
+  state = {
+    inventory: []
+  }
+
+  toggleSegmentSelection(ipa) {
+    if (!this.state.inventory.includes(ipa)) {
+        this.setState({
+            inventory: this.state.inventory.concat([ipa])
+        });
+    } else {
+        let inv = this.state.inventory.filter(x => x !== ipa);
+        this.setState({
+            inventory: inv
+        });   
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
-        <Main />
+        <main>
+          <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route path='/processor' render={props => <PhonProcessor inventory={this.state.inventory} toggleSegmentSelection={this.toggleSegmentSelection.bind(this)}/>} />
+            <Route path='/difference' component={Difference}/>
+          </Switch>
+        </main>
       </div>
     );
   }
