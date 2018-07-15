@@ -10,9 +10,13 @@ export class SegmentPicker extends React.Component {
     render() {
 
         let ipa_symbols = [];
-        featuresAPI.forEach(x => {
-            ipa_symbols.push(x.ipa);
-        })
+        if (!this.props.useFullInv && this.props.inventory) {
+            ipa_symbols = this.props.inventory;
+        } else {
+            featuresAPI.forEach(x => {
+                ipa_symbols.push(x.ipa);
+            })
+        }
 
         return(
             <select onChange={this.handleChange.bind(this)}>

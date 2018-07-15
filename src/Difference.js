@@ -43,9 +43,9 @@ export class Difference extends React.Component {
                 <p>See how any two sounds differ in terms of distinctive features</p>
                 <UseFullInv selection={this.state.useFullInv} toggleUseFullInv={this.useFullInv.bind(this)}/>
                 <ShowIrrelevantFeatures checked={this.state.showIrrelevant} toggleShowIrrelevantFeatures={this.showIrrelevantFeatures.bind(this)}/>
-                <SegmentPicker pickSegment={this.pickSound1.bind(this)}/>
-                <SegmentPicker pickSegment={this.pickSound2.bind(this)}/>
-                <ComparisonWindow sound1={this.state.sound1} sound2={this.state.sound2} showIrrelevant={this.state.showIrrelevant}/>
+                <SegmentPicker pickSegment={this.pickSound1.bind(this)} useFullInv={this.state.useFullInv} inventory={this.props.inventory} />
+                <SegmentPicker pickSegment={this.pickSound2.bind(this)} useFullInv={this.state.useFullInv} inventory={this.props.inventory} />
+                <ComparisonWindow sound1={this.state.sound1} sound2={this.state.sound2} showIrrelevant={this.state.showIrrelevant} />
             </div>
         )
     }
