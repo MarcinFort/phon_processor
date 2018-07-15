@@ -39,7 +39,12 @@ export class InvWindow extends React.Component {
 
     componentWillMount() {
         let headerFeatures = Object.keys(featuresAPI[0]).slice(1);
-        let featuresAPICopy = JSON.parse(JSON.stringify(featuresAPI)); // We need a deep copy to avoid overwriting the API
+        let featuresAPICopy;
+        if (this.props.inventory.length > 1) {
+            featuresAPICopy = JSON.parse(JSON.stringify(this.props.inventory));
+        } else {
+            featuresAPICopy = JSON.parse(JSON.stringify(featuresAPI)); // We need a deep copy to avoid overwriting the API
+        }
 
         this.setState({
             headerFeatures: headerFeatures,
