@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const Header = () => (
+export const Header = (props) => (
     <header>
         <div id="logo">
             <h1 class="program_name">PhonProcessər</h1>
@@ -14,5 +14,8 @@ export const Header = () => (
                 <li><Link to='/difference'>Difference</Link></li>
             </ul>
         </nav>
+        <div id="show_inventory">
+            {props.inventory.length === 0 ? "You are using all basic segments. To customise, create your own inventory." : "You are using a custom inventory consisting of "+props.inventory.length+" segments."}
+        </div>
     </header>
 )

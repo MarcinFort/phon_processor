@@ -15,25 +15,25 @@ class App extends Component {
 
   toggleSegmentSelection(ipa) {
     if (!this.state.inventory.includes(ipa)) {
-        this.setState({
-            inventory: this.state.inventory.concat([ipa])
-        });
+      this.setState({
+        inventory: this.state.inventory.concat([ipa])
+      });
     } else {
-        let inv = this.state.inventory.filter(x => x !== ipa);
-        this.setState({
-            inventory: inv
-        });   
+      let inv = this.state.inventory.filter(x => x !== ipa);
+      this.setState({
+        inventory: inv
+      });
     }
   }
 
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header inventory={this.state.inventory} />
         <main>
           <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route path='/inventory' render={props => <PickInventory toggleSegmentSelection={this.toggleSegmentSelection.bind(this)} inventory={this.state.inventory}/>} />
+            <Route exact path='/' component={Home} />
+            <Route path='/inventory' render={props => <PickInventory toggleSegmentSelection={this.toggleSegmentSelection.bind(this)} inventory={this.state.inventory} />} />
             <Route path='/processor' render={props => <PhonProcessor inventory={this.state.inventory} />} />
             <Route path='/difference' render={props => <Difference inventory={this.state.inventory} />} />
           </Switch>

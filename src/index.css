@@ -24,6 +24,14 @@ body {
   font-size: 4rem;
 }
 
+header li {
+  display: inline-block;
+}
+
+#show_inventory {
+  width: 100%;
+}
+
 /* PickInventory */
 
 #consonants td, #vowels td {
