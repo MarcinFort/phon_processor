@@ -26,6 +26,11 @@ body {
 
 /* PickInventory */
 
+#consonants td, #vowels td {
+  text-align: center;
+  border: 1px solid antiquewhite;
+}
+
 td.selected {
   background-color: grey;
 }
