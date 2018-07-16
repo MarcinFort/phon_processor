@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Header } from './Header';
 import { Home } from './Home';
+import { PickInventory } from './PickInventory';
 import { PhonProcessor } from './PhonProcessor';
 import { Difference } from './Difference';
 import { Switch, Route } from 'react-router-dom';
@@ -33,7 +34,8 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path='/' component={Home}/>
-            <Route path='/processor' render={props => <PhonProcessor inventory={this.state.inventory} toggleSegmentSelection={this.toggleSegmentSelection.bind(this)}/>} />
+            <Route path='/inventory' render={props => <PickInventory toggleSegmentSelection={this.toggleSegmentSelection.bind(this)} inventory={this.state.inventory}/>} />
+            <Route path='/processor' render={props => <PhonProcessor inventory={this.state.inventory} />} />
             <Route path='/difference' render={props => <Difference inventory={this.state.inventory} />} />
           </Switch>
         </main>
