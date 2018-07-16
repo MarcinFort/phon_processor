@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 
 export const Header = () => (
     <header>
+        <div id="logo">
+            <h1 class="program_name">PhonProcessər</h1>
+        </div>
         <nav>
             <ul>
                 <li><Link to='/'>Home</Link></li>
