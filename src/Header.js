@@ -15,7 +15,7 @@ export const Header = (props) => (
             </ul>
         </nav>
         <div id="show_inventory">
-            {props.inventory.length === 0 ? "You are using all basic segments. To customise, create your own inventory." : "You are using a custom inventory consisting of "+props.inventory.length+" segments."}
+            {props.inventory.length === 0 ? "You are using all basic segments. To customise, create your own inventory." : (props.inventory.length === 1 ? "You are using a custom inventory consisting of 1 segment." : "You are using a custom inventory consisting of "+props.inventory.length+" segments.")}
         </div>
     </header>
 )
