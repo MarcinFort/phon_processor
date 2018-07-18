@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Header = (props) => (
     <header>
@@ -8,10 +8,10 @@ export const Header = (props) => (
         </div>
         <nav>
             <ul>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/inventory'>Create or modify the inventory</Link></li>
-                <li><Link to='/processor'>Processor</Link></li>
-                <li><Link to='/difference'>Difference</Link></li>
+                <li><NavLink to='/' exact activeClassName="active_link">Home</NavLink></li>
+                <li><NavLink to='/inventory' activeClassName="active_link">Create or modify the inventory</NavLink></li>
+                <li><NavLink to='/processor' activeClassName="active_link">Processor</NavLink></li>
+                <li><NavLink to='/difference' activeClassName="active_link">Difference</NavLink></li>
             </ul>
         </nav>
         <div id="show_inventory">

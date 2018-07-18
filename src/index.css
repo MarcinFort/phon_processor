@@ -3,15 +3,20 @@
 /* General */
 
 * {
-  background-color: black;
+  background-color: rgb(58, 57, 57);
   color: antiquewhite;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 body {
-  margin: 0;
+  margin: 20px;
   padding: 0;
   font-family: sans-serif;
+}
+
+.App {
+  max-width: 1200px;
+  margin: auto;
 }
 
 .program_name {
@@ -20,16 +25,72 @@ body {
 
 /* Header */
 
+header {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#logo {
+  max-height: 50%;
+}
+
+#logo, nav, #show_inventory {
+  flex: 1 100%;
+}
+
 #logo h1 {
-  font-size: 4rem;
+  font-size: 8vw;
+  text-align: center;
 }
 
-header li {
+nav ul {
+  list-style: none;
+  text-align: center;
+  padding-left: 0;
+}
+
+nav ul li {
   display: inline-block;
+  font-variant: small-caps;
 }
 
-#show_inventory {
-  width: 100%;
+nav ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #aaa;
+  margin: 0 10px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+nav ul li a, nav ul li a:after, nav ul li a:before {
+  transition: all 0.9s;
+}
+
+nav ul li a:hover, .active_link {
+  color:  rgb(58, 57, 57);
+}
+
+nav ul li a:before, .active_link:before {
+  background: #fff;
+  content: '.';
+  color: transparent;
+  position: absolute;
+  width: 500%;
+  top: 100px;
+  right: 300px;
+  height: 300px;
+  z-index: -1;
+}
+
+nav ul li a:hover:before, .active_link:before {
+  left: auto;
+  bottom: auto;
+  right: -50%;
+  top: 0;
+  background: antiquewhite;
 }
 
 /* PickInventory */
@@ -58,10 +119,11 @@ header li {
 
 #other_consonants {
   width: 25%;
+  margin-right: 10px;
 }
 
 .inv_table th, .inv_table tr td:first-child {
-  background-color: rgb(51, 49, 49);
+  background-color: black;
 }
 
 .inv_table th {
@@ -77,5 +139,6 @@ header li {
 }
 
 td.selected {
-  background-color: grey;
+  background-color: rgb(180, 180, 180);
+  color: black;
 }
