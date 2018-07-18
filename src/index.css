@@ -34,12 +34,48 @@ header li {
 
 /* PickInventory */
 
-#consonants td, #vowels td {
+#pick_inventory {
+  margin: auto;
+}
+
+.inv_table {
+  border-collapse: collapse;
+}
+
+#consonants, #inv_container {
+  width: 90%;
+  margin: 50px 30px 0px;
+}
+
+#inv_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#vowels {
+  width: 70%;
+}
+
+#other_consonants {
+  width: 25%;
+}
+
+.inv_table th, .inv_table tr td:first-child {
+  background-color: rgb(51, 49, 49);
+}
+
+.inv_table th {
+  height: 60px;
+  border: 1px solid antiquewhite;
+}
+
+.inv_table td {
   text-align: center;
   border: 1px solid antiquewhite;
+  box-sizing: border-box;
+  min-width: 80px;
 }
 
 td.selected {
   background-color: grey;
 }
-

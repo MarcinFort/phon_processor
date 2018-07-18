@@ -10,8 +10,8 @@ export class PickInventory extends React.Component {
         let vowels = [["close ","i","y","ɨ","ʉ","ɯ","u"],["close-mid ","ɪ","ʏ","","","","ʊ"],["mid   ","e","ø","ɘ","ɵ","ɤ","o"],["open-mid ","ɛ","œ","ə","ɞ","ʌ","ɔ"],["open  ","ӕ","ɶ","a","","ɑ","ɒ"]]
 
         return(
-            <div>
-                <table id="consonants">
+            <div id="pick_inventory">
+                <table id="consonants" class="inv_table">
                     <thead>
                         <tr>
                             <th>CONSONANTS</th>
@@ -32,29 +32,34 @@ export class PickInventory extends React.Component {
                     <tbody>
                         {basic_consonants.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.props.toggleSegmentSelection} selected={this.props.inventory.includes(y)}/>)}</tr>)}
                     </tbody>
-                    <thead>
-                        <tr>
-                            <th>OTHER</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {other_consonants.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.props.toggleSegmentSelection} selected={this.props.inventory.includes(y)}/>)}</tr>)}
-                    </tbody>
                 </table>
-                <table id="vowels">
-                    <thead>
-                        <th>VOWELS</th>
-                        <th>front unrounded</th>
-                        <th>front rounded</th>
-                        <th>central unrounded</th>
-                        <th>central rounded</th>
-                        <th>back unrounded</th>
-                        <th>back rounded</th>
-                    </thead>
-                    <tbody>
-                        {vowels.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.props.toggleSegmentSelection} selected={this.props.inventory.includes(y)}/>)}</tr>)}
-                    </tbody>
-                </table>
+                <div id="inv_container">
+                    <table id="other_consonants" class="inv_table">
+                        <thead>
+                            <tr>
+                                <th>OTHER</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {other_consonants.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.props.toggleSegmentSelection} selected={this.props.inventory.includes(y)}/>)}</tr>)}
+                        </tbody>
+                    </table>
+                    <table id="vowels" class="inv_table">
+                        <thead>
+                            <th>VOWELS</th>
+                            <th>front unrounded</th>
+                            <th>front rounded</th>
+                            <th>central unrounded</th>
+                            <th>central rounded</th>
+                            <th>back unrounded</th>
+                            <th>back rounded</th>
+                        </thead>
+                        <tbody>
+                            {vowels.map(x => <tr>{x.map(y => <PickInventoryTableData ipa={y} toggleSegmentSelection={this.props.toggleSegmentSelection} selected={this.props.inventory.includes(y)}/>)}</tr>)}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }
