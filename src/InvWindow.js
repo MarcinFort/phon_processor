@@ -91,20 +91,22 @@ export class InvWindow extends React.Component {
     render() {
 
         return (
-            <table>
-                <thead>
-                    <tr>
-                        <th onClick={event => this.onSort(event, 'index')}>No.</th>
-                        <th onClick={event => this.onSort(event, 'ipa')}>Input</th>
-                        <th>    </th>
-                        <th onClick={event => this.onSort(event, 'ipa')}>Output</th>
-                        {this.state.headerFeatures.map(x => <th onClick={event => this.onSort(event, x)}>{x}</th>)}
-                    </tr>
-                </thead>
-                <tbody>
-                    {JSON.stringify(this.props.input_features).length > 2 ? (this.state.sortedData ? this.state.sortedData.map((y, key) => <IndivSegmentRow spec={y} key={key}/>) : (this.state.filteredInvChanged ? this.state.filteredInvChanged.map((y, key) => <IndivSegmentRow spec={y} key={key}/>) : this.state.filteredInv.map((y, key) => <IndivSegmentRow spec={y} key={key}/>))) : <tr></tr>}
-                </tbody>
-            </table>    
+            <div id="invwindow_container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th onClick={event => this.onSort(event, 'index')}>No.</th>
+                            <th onClick={event => this.onSort(event, 'ipa')}>Input</th>
+                            <th>    </th>
+                            <th onClick={event => this.onSort(event, 'ipa')}>Output</th>
+                            {this.state.headerFeatures.map(x => <th onClick={event => this.onSort(event, x)}>{x}</th>)}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {JSON.stringify(this.props.input_features).length > 2 ? (this.state.sortedData ? this.state.sortedData.map((y, key) => <IndivSegmentRow spec={y} key={key}/>) : (this.state.filteredInvChanged ? this.state.filteredInvChanged.map((y, key) => <IndivSegmentRow spec={y} key={key}/>) : this.state.filteredInv.map((y, key) => <IndivSegmentRow spec={y} key={key}/>))) : <tr></tr>}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 
