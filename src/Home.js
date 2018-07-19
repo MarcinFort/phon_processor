@@ -3,6 +3,7 @@ import React from 'react';
 export const Home = () => (
     <div id="welcome_info">
         <h1>Welcome to <span class="program_name">PhonProcessər!</span></h1>
+        <p>(UNDER CONSTRUCTION)</p>
         <p>PhonProcessər is intended to be an online clone of <i>FeaturePad</i> and <i>Pheatures</i>, programs intended to help students of linguistics to learn phonological distinctive features. Special credits need to be given to the creators of the aforementioned software: Bruce Hayes, Kie Zuraw and Floris van Vugt. Unlike its predecessor, it is possible to use PhonProcessər in the browser, without downloading anything to your machine.</p>
         <p>Currently, PhonProcessər in the Alpha version allows you to:
             <ul>
