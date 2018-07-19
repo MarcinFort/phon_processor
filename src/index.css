@@ -164,3 +164,28 @@ td.selected {
 #invwindow_container th, #invwindow_container td:first-child {
   background-color: black
 }
+
+/* Difference */
+
+#difference select, #difference input {
+  margin: 10px;
+}
+
+#difference table {
+  margin-left: 11px;
+}
+
+#difference th {
+  background-color: black;
+}
+
+#difference td {
+  text-align: center;
+  min-width: 160px;
+  padding: 5px;
+}
+
+.diffSegment td {
+  background-color: rgb(180, 180, 180);
+  color: black;
+}

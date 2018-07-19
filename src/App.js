@@ -35,7 +35,7 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route path='/inventory' render={props => <PickInventory toggleSegmentSelection={this.toggleSegmentSelection.bind(this)} inventory={this.state.inventory} />} />
             <Route path='/processor' render={props => <PhonProcessor inventory={this.state.inventory} />} />
-            <Route path='/difference' render={props => <Difference inventory={this.state.inventory} />} />
+            <Route path='/compare' render={props => <Difference inventory={this.state.inventory} />} />
           </Switch>
         </main>
       </div>

@@ -36,8 +36,8 @@ export class ComparisonWindow extends React.Component {
             <table>
                 <thead>
                     <tr>
-                        <th>{this.props.sound1 === "none" ? "" : this.props.sound1}</th>
-                        <th>{this.props.sound2 === "none" ? "" : this.props.sound2}</th>
+                        {this.props.sound1 === "none" || this.props.sound1 === "" ? null : <th>{this.props.sound1}</th>}
+                        {this.props.sound2 === "none" || this.props.sound2 === "" ? null : <th>{this.props.sound2}</th>}
                     </tr>
                 </thead>
                 <tbody>

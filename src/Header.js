@@ -11,7 +11,7 @@ export const Header = (props) => (
                 <li><NavLink to='/' exact activeClassName="active_link">Home</NavLink></li>
                 <li><NavLink to='/inventory' activeClassName="active_link">Create or modify the inventory</NavLink></li>
                 <li><NavLink to='/processor' activeClassName="active_link">Processor</NavLink></li>
-                <li><NavLink to='/difference' activeClassName="active_link">Difference</NavLink></li>
+                <li><NavLink to='/compare' activeClassName="active_link">Compare</NavLink></li>
             </ul>
         </nav>
         <div id="show_inventory">
