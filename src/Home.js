@@ -9,7 +9,7 @@ export const Home = () => (
             <ul>
                 <li>Run phonological processes specified in terms of distinctive features</li>
                 <li>Create your own phoneme inventories</li>
-                <li>Compare any two phonemes in terms of their phoneme specification</li>
+                <li>Compare any two phonemes in terms of their feature specification</li>
             </ul>
         </p>
         <p>Planned functionalities (coming soon!):
