@@ -40,7 +40,9 @@ export class PhonProcessor extends React.Component {
     render() {
         return (
             <div>
+                <p>Add input features:</p>
                 <SegmentDiv addFeature={this.addInputFeature.bind(this)} removeFeature={this.removeInputFeature.bind(this)} features={this.state.input_features} key={1} />
+                <p>Add features which you would like to change:</p>
                 <SegmentDiv addFeature={this.addSCFeature.bind(this)} removeFeature={this.removeSCFeature.bind(this)} features={this.state.structural_change} key={2} />
                 <InvWindow inventory={this.props.inventory} input_features={this.state.input_features} structural_change={this.state.structural_change} />
             </div>)
